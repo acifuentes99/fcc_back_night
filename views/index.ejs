@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Nightlife Coordination APP</title>
+    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+</head>
+<body>
+	<!-- Coloca elementos React -->
+	<!-- div id="searchableTable"></div -->
+    <div class="main-container">
+
+        <div class="jumbotron">
+            <h1>Nightlife Coordination App</h1>
+            <p class="desc">Welcome to Nightlife Coordination App!, you can search from different places in your area, and confirm that you're in!. Just type your place at the search bar below, and then press enter or click the button Search!, to see the places.</p>
+            </br>
+            <p class="desc">Or, search anyway, and see how much people are going out.</p>
+        </div>
+
+
+            <div class="btn-container">
+                <% if (user) { %>
+            <span>Welcome <%= user.facebook.name %>!!</span>
+                <% } else { %>
+            <span>Not logged in</span>
+            <% }; %>
+            <br>
+                <a class="btn-primary btn" href="/auth/facebook">Log with Facebook</a>
+                <a class="btn-primary btn" href="/logout">Logout</a>
+            </div>
+
+    <div id="getinfo"></div>
+    </div>
+    <footer>
+      <% include ./footer.ejs %> 
+    </footer>
+
+	<!-- one script to ule them all (in production) -->
+    <% if (user) {%>
+    <script>
+                window.name = '<%- user.facebook.name %>';
+                window.id =  '<%- user.facebook.id %>';  //JSON.parse('{['+'<%- user.places %>'+']}');
+    </script><% } %>
+	<script src="../public/js/jquery-2.2.3.min.js"></script>
+	<script src="../public/js/bootstrap.min.js"></script>
+	<script src="../public/js/vendors.js"></script>
+	<script src="../public/js/bundle.js"></script>
+
+  <script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>
